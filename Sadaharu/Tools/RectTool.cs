@@ -5,25 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-//using Sadaharu;
 
 namespace Sadaharu.Tools
 {
-    interface DrawLineMethod
-    {
-        void drawLine(Graphics g, Pen pen, Point p1, Point p2);
-    }
-
-    class LineTool:Tool
+    class RectTool:Tool
     {
         Point startPoint;
+        DrawRectMethod method;
 
-        DrawLineMethod method;
-
-        public LineTool(MainWin window, PictureBox pic) : base(window, pic)
+        public RectTool(MainWin window, PictureBox pic) : base(window, pic)
         {
-            //this.method = new Bresenham();
-            this.method = new SystemDrawLine();
+            this.method = new SystemDrawRect();
+            //this.method = new MyDrawRect();
         }
 
         public override void startUseTool()
@@ -56,7 +49,7 @@ namespace Sadaharu.Tools
 
         private void MainPicture_MouseMove(object sender, MouseEventArgs e)
         {
-            if(isEnabled)
+            if (isEnabled)
             {
                 mainPicture.Image.Dispose();
                 mainPicture.Image = (Image)imageTmp.Clone();
@@ -77,48 +70,46 @@ namespace Sadaharu.Tools
                     draw(g, Common.setting.nowPen, startPoint, e.Location);
                 }
                 isEnabled = false;
-                mainWindow.cmdPrint(string.Format("Line: {0} to {1}", startPoint, e.Location));
+                mainWindow.cmdPrint(string.Format("Rectangle: {0} to {1}", startPoint, e.Location));
                 /*
-                 * save a line here
+                 * save a Rect here
                  */
             }
         }
 
         public void draw(Graphics g, Pen pen, Point p1, Point p2)
         {
-            this.method.drawLine(g, pen, p1, p2);
+            this.method.drawRect(g, pen, p1, p2);
         }
     }
 
-    class SystemDrawLine:DrawLineMethod
+    interface DrawRectMethod
     {
-        public void drawLine(Graphics g, Pen pen, Point p1, Point p2)
+        void drawRect(Graphics g, Pen pen, Point p1, Point p2);
+    }
+
+    class SystemDrawRect:DrawRectMethod
+    {
+        public void drawRect(Graphics g, Pen pen, Point p1, Point p2)
         {
-            g.DrawLine(pen, p1, p2);
+            int x = p1.X < p2.X ? p1.X : p2.X;
+            int y = p1.Y < p2.Y ? p1.Y : p2.Y;
+            int lx = p1.X + p2.X - x - x;
+            int ly = p1.Y + p2.Y - y - y;
+            g.DrawRectangle(pen, x, y, lx, ly);
         }
     }
 
-    class Bresenham:DrawLineMethod
+    class MyDrawRect:DrawRectMethod
     {
-        private void bresenham(Graphics g, Pen pen, Point p1, Point p2)
+        public void drawRect(Graphics g, Pen pen, Point p1, Point p2)
         {
-            int x1 = p1.X, y1 = p1.Y, x2 = p2.X, y2 = p2.Y;
-            int dx = Math.Abs(x2 - x1), sx = x1 < x2 ? 1 : -1;
-            int dy = Math.Abs(y2 - y1), sy = y1 < y2 ? 1 : -1;
-            int err = (dx > dy ? dx : -dy) / 2, e2;
-            while(true)
-            {
-                g.DrawRectangle(pen, x1, y1, 1, 1);
-                if (x1 == x2 && y1 == y2) break;
-                e2 = err;
-                if (e2 > -dx) { err -= dy; x1 += sx; }
-                if (e2 < dy) { err += dx; y1 += sy; }
-            }
-        }
-
-        public void drawLine(Graphics g, Pen pen, Point p1, Point p2)
-        {
-            bresenham(g, pen, p1, p2);
+            Point p3 = new Point(p1.X, p2.Y);
+            Point p4 = new Point(p2.X, p1.Y);
+            Common.drawtools.lineTool.draw(g, pen, p1, p3);
+            Common.drawtools.lineTool.draw(g, pen, p1, p4);
+            Common.drawtools.lineTool.draw(g, pen, p2, p3);
+            Common.drawtools.lineTool.draw(g, pen, p2, p4);
         }
     }
 }

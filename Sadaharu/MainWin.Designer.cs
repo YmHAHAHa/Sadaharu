@@ -110,6 +110,7 @@
             this.buttonRect.Size = new System.Drawing.Size(55, 55);
             this.buttonRect.TabIndex = 3;
             this.buttonRect.UseVisualStyleBackColor = false;
+            this.buttonRect.Click += new System.EventHandler(this.buttonRect_Click);
             // 
             // buttonPoly
             // 
@@ -123,6 +124,7 @@
             this.buttonPoly.Size = new System.Drawing.Size(55, 55);
             this.buttonPoly.TabIndex = 4;
             this.buttonPoly.UseVisualStyleBackColor = false;
+            this.buttonPoly.Click += new System.EventHandler(this.buttonPoly_Click);
             // 
             // buttonFillColor
             // 

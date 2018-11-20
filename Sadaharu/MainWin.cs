@@ -91,5 +91,18 @@ namespace Sadaharu
                 cmdPrint(string.Format("Save the image as {0}", saveFileDialog1.FileName));
             }
         }
+
+        private void buttonRect_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.rectTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint("Ready to draw a Rectangle");
+        }
+
+        private void buttonPoly_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+        }
     }
 }
