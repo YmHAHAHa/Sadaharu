@@ -28,7 +28,7 @@ namespace Sadaharu.Tools
         public override void endUseTool()
         {
             base.endUseTool();
-            mainPicture.Cursor = Cursors.Cross;
+            mainPicture.Cursor = Cursors.Default;
             mainPicture.MouseClick -= MainPicture_MouseClick;
             mainPicture.MouseMove -= MainPicture_MouseMove;
         }
