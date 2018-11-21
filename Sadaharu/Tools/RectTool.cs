@@ -49,14 +49,12 @@ namespace Sadaharu.Tools
 
         private void MainPicture_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isEnabled)
+            if (!isEnabled) return;
+            mainPicture.Image.Dispose();
+            mainPicture.Image = (Image)imageTmp.Clone();
+            using (Graphics g = Graphics.FromImage(mainPicture.Image))
             {
-                mainPicture.Image.Dispose();
-                mainPicture.Image = (Image)imageTmp.Clone();
-                using (Graphics g = Graphics.FromImage(mainPicture.Image))
-                {
-                    draw(g, Common.setting.nowPen, startPoint, e.Location);
-                }
+                draw(g, Common.setting.nowPen, startPoint, e.Location);
             }
         }
 
@@ -64,13 +62,11 @@ namespace Sadaharu.Tools
         {
             if (e.Button == MouseButtons.Left)
             {
-                mainPicture.Image = (Image)imageTmp.Clone();
-                using (Graphics g = Graphics.FromImage(mainPicture.Image))
-                {
-                    draw(g, Common.setting.nowPen, startPoint, e.Location);
-                }
                 isEnabled = false;
-                mainWindow.cmdPrint(string.Format("Rectangle: {0} to {1}", startPoint, e.Location));
+                imageTmp.Dispose();
+                mainWindow.cmdPrint(string.Format("Rectangle: ({0},{1}), ({2},{3}), ({4},{5}), ({6},{7})",
+                    startPoint.X, startPoint.Y, startPoint.X, e.Location.Y,
+                    e.Location.X, e.Location.Y, e.Location.X, startPoint.Y));
                 /*
                  * save a Rect here
                  */

@@ -85,6 +85,7 @@
             this.buttonCircle.Size = new System.Drawing.Size(55, 55);
             this.buttonCircle.TabIndex = 1;
             this.buttonCircle.UseVisualStyleBackColor = false;
+            this.buttonCircle.Click += new System.EventHandler(this.buttonCircle_Click);
             // 
             // mainPicture
             // 

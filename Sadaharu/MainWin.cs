@@ -103,6 +103,17 @@ namespace Sadaharu
         private void buttonPoly_Click(object sender, EventArgs e)
         {
             Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.polyTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint("Ready to draw a Polygon");
+        }
+
+        private void buttonCircle_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.circleTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint("Ready to draw a Circle");
         }
     }
 }

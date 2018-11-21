@@ -35,12 +35,50 @@ namespace Sadaharu.Tools
 
         private void MainPicture_MouseClick(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                isEnabled = true;
+                pointList.Add(e.Location);
+                //imageTmp = (Image)mainPicture.Image.Clone();
+                if (pointList.Count == 1)
+                {
+                    imageTmp = (Image)mainPicture.Image.Clone();
+                    return;
+                }
+                using (Graphics g = Graphics.FromImage(imageTmp))
+                {
+                    Common.drawtools.lineTool.draw(g, Common.setting.nowPen,
+                        e.Location, pointList[pointList.Count - 2]);
+                }
+            }
+            else
+            {
+                if (!isEnabled) return;
+                pointList.Add(e.Location);
+                isEnabled = false;
+                imageTmp.Dispose();
+                string tmp = "Polygon: ";
+                foreach (Point i in pointList) tmp += string.Format("({0},{1}),", i.X, i.Y);
+                mainWindow.cmdPrint(tmp);
+                /*
+                 * save a Poly here
+                 */
+                pointList.Clear();
+            }
         }
 
         private void MainPicture_MouseMove(object sender, MouseEventArgs e)
         {
-
+            if (!isEnabled) return;
+            mainPicture.Image.Dispose();
+            mainPicture.Image = (Image)imageTmp.Clone();
+            using (Graphics g = Graphics.FromImage(mainPicture.Image))
+            {
+                Common.drawtools.lineTool.draw(g, Common.setting.nowPen,
+                    e.Location, pointList[pointList.Count - 1]);
+                Common.drawtools.lineTool.draw(g, Common.setting.nowPen,
+                    e.Location, pointList[0]);
+            }
         }
     }
 }
