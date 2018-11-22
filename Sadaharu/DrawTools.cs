@@ -26,6 +26,8 @@ namespace Sadaharu
 
         public CircleTool circleTool;
 
+        public CurveTool curveTool;
+
         public DrawTools(MainWin window, PictureBox pic)
         {
             this.mainWindow = window;
@@ -35,6 +37,7 @@ namespace Sadaharu
             this.rectTool = new RectTool(mainWindow, mainPicture);
             this.polyTool = new PolyTool(mainWindow, mainPicture);
             this.circleTool = new CircleTool(mainWindow, mainPicture);
+            this.curveTool = new CurveTool(mainWindow, mainPicture);
         }
     }
 }

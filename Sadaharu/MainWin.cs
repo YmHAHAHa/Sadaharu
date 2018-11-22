@@ -115,5 +115,13 @@ namespace Sadaharu
             Common.drawtools.nowTool.startUseTool();
             cmdPrint("Ready to draw a Circle");
         }
+
+        private void buttonCurve_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.curveTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint("Ready to draw a Curve");
+        }
     }
 }
