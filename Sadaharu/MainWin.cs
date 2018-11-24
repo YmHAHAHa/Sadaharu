@@ -53,11 +53,24 @@ namespace Sadaharu
 
         private void buttonColor_Click(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
-            buttonColor.BackColor = colorDialog1.Color;
-            //cmdPrint("Adjust color to " + colorDialog1.Color.ToString());
-            Common.setting.nowPen.Color = colorDialog1.Color;
-            cmdPrint(string.Format("Adjust color to {0,2}", colorDialog1.Color));
+            //colorDialog1.ShowDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                buttonColor.BackColor = colorDialog1.Color;
+                Common.setting.nowPen.Color = colorDialog1.Color;
+                cmdPrint(string.Format("Adjust pen color to {0,2}", colorDialog1.Color));
+            }
+        }
+
+        private void buttonBackColor_Click(object sender, EventArgs e)
+        {
+            //colorDialog1.ShowDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                buttonBackColor.BackColor = colorDialog1.Color;
+                Common.setting.nowColor = colorDialog1.Color;
+                cmdPrint(string.Format("Adjust back color to {0,2}", colorDialog1.Color));
+            }
         }
 
         private void buttonStraight_Click(object sender, EventArgs e)

@@ -43,6 +43,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.buttonColor = new System.Windows.Forms.Button();
             this.panelColor = new System.Windows.Forms.Panel();
+            this.buttonBackColor = new System.Windows.Forms.Button();
             this.panelXiankuan = new System.Windows.Forms.Panel();
             this.labelXiankuan = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
@@ -134,7 +135,7 @@
             this.buttonFillColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonFillColor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonFillColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFillColor.Location = new System.Drawing.Point(13, 10);
+            this.buttonFillColor.Location = new System.Drawing.Point(17, 10);
             this.buttonFillColor.Name = "buttonFillColor";
             this.buttonFillColor.Size = new System.Drawing.Size(50, 50);
             this.buttonFillColor.TabIndex = 5;
@@ -147,7 +148,7 @@
             this.buttonArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonArrow.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonArrow.Location = new System.Drawing.Point(392, 17);
+            this.buttonArrow.Location = new System.Drawing.Point(368, 17);
             this.buttonArrow.Name = "buttonArrow";
             this.buttonArrow.Size = new System.Drawing.Size(55, 55);
             this.buttonArrow.TabIndex = 6;
@@ -210,7 +211,7 @@
             this.buttonColor.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonColor.FlatAppearance.BorderSize = 0;
             this.buttonColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonColor.Location = new System.Drawing.Point(89, 10);
+            this.buttonColor.Location = new System.Drawing.Point(87, 10);
             this.buttonColor.Name = "buttonColor";
             this.buttonColor.Size = new System.Drawing.Size(50, 50);
             this.buttonColor.TabIndex = 16;
@@ -220,12 +221,25 @@
             // panelColor
             // 
             this.panelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelColor.Controls.Add(this.buttonBackColor);
             this.panelColor.Controls.Add(this.buttonColor);
             this.panelColor.Controls.Add(this.buttonFillColor);
-            this.panelColor.Location = new System.Drawing.Point(637, 8);
+            this.panelColor.Location = new System.Drawing.Point(589, 8);
             this.panelColor.Name = "panelColor";
-            this.panelColor.Size = new System.Drawing.Size(154, 70);
+            this.panelColor.Size = new System.Drawing.Size(224, 70);
             this.panelColor.TabIndex = 17;
+            // 
+            // buttonBackColor
+            // 
+            this.buttonBackColor.BackColor = System.Drawing.Color.White;
+            this.buttonBackColor.FlatAppearance.BorderSize = 0;
+            this.buttonBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBackColor.Location = new System.Drawing.Point(157, 10);
+            this.buttonBackColor.Name = "buttonBackColor";
+            this.buttonBackColor.Size = new System.Drawing.Size(50, 50);
+            this.buttonBackColor.TabIndex = 17;
+            this.buttonBackColor.UseVisualStyleBackColor = false;
+            this.buttonBackColor.Click += new System.EventHandler(this.buttonBackColor_Click);
             // 
             // panelXiankuan
             // 
@@ -254,7 +268,7 @@
             this.buttonClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClear.Location = new System.Drawing.Point(146, 17);
+            this.buttonClear.Location = new System.Drawing.Point(140, 17);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(55, 55);
             this.buttonClear.TabIndex = 19;
@@ -283,7 +297,7 @@
             this.button3D.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button3D.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button3D.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3D.Location = new System.Drawing.Point(556, 17);
+            this.button3D.Location = new System.Drawing.Point(520, 17);
             this.button3D.Name = "button3D";
             this.button3D.Size = new System.Drawing.Size(55, 55);
             this.button3D.TabIndex = 21;
@@ -296,7 +310,7 @@
             this.buttonUndo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonUndo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUndo.Location = new System.Drawing.Point(228, 17);
+            this.buttonUndo.Location = new System.Drawing.Point(216, 17);
             this.buttonUndo.Name = "buttonUndo";
             this.buttonUndo.Size = new System.Drawing.Size(55, 55);
             this.buttonUndo.TabIndex = 22;
@@ -309,7 +323,7 @@
             this.buttonCut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonCut.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonCut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCut.Location = new System.Drawing.Point(474, 17);
+            this.buttonCut.Location = new System.Drawing.Point(444, 17);
             this.buttonCut.Name = "buttonCut";
             this.buttonCut.Size = new System.Drawing.Size(55, 55);
             this.buttonCut.TabIndex = 23;
@@ -322,7 +336,7 @@
             this.buttonRedo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonRedo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRedo.Location = new System.Drawing.Point(310, 17);
+            this.buttonRedo.Location = new System.Drawing.Point(292, 17);
             this.buttonRedo.Name = "buttonRedo";
             this.buttonRedo.Size = new System.Drawing.Size(55, 55);
             this.buttonRedo.TabIndex = 24;
@@ -387,6 +401,7 @@
         private System.Windows.Forms.Button buttonUndo;
         private System.Windows.Forms.Button buttonCut;
         private System.Windows.Forms.Button buttonRedo;
+        private System.Windows.Forms.Button buttonBackColor;
     }
 }
 

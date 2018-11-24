@@ -78,6 +78,12 @@ namespace Sadaharu.Tools
                     e.Location, pointList[pointList.Count - 1]);
                 Common.drawtools.lineTool.draw(g, Common.setting.nowPen,
                     e.Location, pointList[0]);
+                if (Common.setting.nowColor != Color.White)
+                {
+                    pointList.Add(e.Location);
+                    g.FillPolygon(new SolidBrush(Common.setting.nowColor), pointList.ToArray());
+                    pointList.RemoveAt(pointList.Count - 1);
+                }
             }
         }
     }

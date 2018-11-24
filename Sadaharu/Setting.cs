@@ -27,7 +27,7 @@ namespace Sadaharu
 
         public Setting()
         {
-            nowColor = Color.Black;
+            nowColor = Color.White;
             nowPen = new Pen(Color.Black);
             nowPen.Width = 1;
         }
