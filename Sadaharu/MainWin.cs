@@ -136,5 +136,13 @@ namespace Sadaharu
             Common.drawtools.nowTool.startUseTool();
             cmdPrint("Ready to draw a Curve");
         }
+
+        private void buttonFillColor_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.fillTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint(string.Format("Ready to fill a region with {0}", Common.setting.nowColor));
+        }
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="Setting.cs" />
     <Compile Include="Tools\CircleTool.cs" />
     <Compile Include="Tools\CurveTool.cs" />
+    <Compile Include="Tools\FillTool.cs" />
     <Compile Include="Tools\LineTool.cs" />
     <Compile Include="Tools\PointerTool.cs" />
     <Compile Include="Tools\PolyTool.cs" />

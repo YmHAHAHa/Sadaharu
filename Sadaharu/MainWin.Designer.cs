@@ -140,6 +140,7 @@
             this.buttonFillColor.Size = new System.Drawing.Size(50, 50);
             this.buttonFillColor.TabIndex = 5;
             this.buttonFillColor.UseVisualStyleBackColor = false;
+            this.buttonFillColor.Click += new System.EventHandler(this.buttonFillColor_Click);
             // 
             // buttonArrow
             // 
