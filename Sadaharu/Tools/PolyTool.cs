@@ -55,6 +55,10 @@ namespace Sadaharu.Tools
             {
                 if (!isEnabled) return;
                 pointList.Add(e.Location);
+                using (Graphics g = Graphics.FromImage(mainPicture.Image))
+                {
+                    g.DrawPolygon(Common.setting.nowPen, pointList.ToArray());
+                }
                 isEnabled = false;
                 imageTmp.Dispose();
                 string tmp = "Polygon: ";
