@@ -92,10 +92,9 @@ namespace Sadaharu.Tools
             int y = p1.Y < p2.Y ? p1.Y : p2.Y;
             int lx = p1.X + p2.X - x - x;
             int ly = p1.Y + p2.Y - y - y;
-            g.DrawRectangle(pen, x, y, lx, ly);
             if (Common.setting.nowColor != Color.White)
-                g.FillRectangle(new SolidBrush(Common.setting.nowColor),
-                    x + 1, y + 1, lx - 1, ly - 1);
+                g.FillRectangle(new SolidBrush(Common.setting.nowColor), x, y, lx, ly);
+            g.DrawRectangle(pen, x, y, lx, ly);
         }
     }
 

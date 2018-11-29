@@ -91,10 +91,9 @@ namespace Sadaharu.Tools
             int y = p1.Y < p2.Y ? p1.Y : p2.Y;
             int lx = p1.X + p2.X - x - x;
             int ly = p1.Y + p2.Y - y - y;
-            g.DrawEllipse(pen, x, y, lx, ly);
             if (Common.setting.nowColor != Color.White)
-                g.FillEllipse(new SolidBrush(Common.setting.nowColor),
-                    x + 1, y + 1, lx - 2, ly - 2);
+                g.FillEllipse(new SolidBrush(Common.setting.nowColor), x, y, lx, ly);
+            g.DrawEllipse(pen, x, y, lx, ly);
         }
     }
 }

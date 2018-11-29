@@ -59,6 +59,7 @@ namespace Sadaharu.Tools
                 {
                     g.DrawPolygon(Common.setting.nowPen, pointList.ToArray());
                 }
+                mainPicture.Image = mainPicture.Image;
                 isEnabled = false;
                 imageTmp.Dispose();
                 string tmp = "Polygon: ";

@@ -66,7 +66,7 @@
             this.buttonStraight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonStraight.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonStraight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStraight.Location = new System.Drawing.Point(3, 84);
+            this.buttonStraight.Location = new System.Drawing.Point(4, 84);
             this.buttonStraight.Name = "buttonStraight";
             this.buttonStraight.Size = new System.Drawing.Size(55, 55);
             this.buttonStraight.TabIndex = 0;
@@ -80,7 +80,7 @@
             this.buttonCircle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonCircle.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonCircle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCircle.Location = new System.Drawing.Point(3, 236);
+            this.buttonCircle.Location = new System.Drawing.Point(4, 236);
             this.buttonCircle.Name = "buttonCircle";
             this.buttonCircle.Size = new System.Drawing.Size(55, 55);
             this.buttonCircle.TabIndex = 1;
@@ -106,7 +106,7 @@
             this.buttonRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonRect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonRect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRect.Location = new System.Drawing.Point(3, 312);
+            this.buttonRect.Location = new System.Drawing.Point(4, 312);
             this.buttonRect.Name = "buttonRect";
             this.buttonRect.Size = new System.Drawing.Size(55, 55);
             this.buttonRect.TabIndex = 3;
@@ -120,7 +120,7 @@
             this.buttonPoly.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonPoly.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonPoly.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPoly.Location = new System.Drawing.Point(3, 388);
+            this.buttonPoly.Location = new System.Drawing.Point(4, 388);
             this.buttonPoly.Name = "buttonPoly";
             this.buttonPoly.Size = new System.Drawing.Size(55, 55);
             this.buttonPoly.TabIndex = 4;
@@ -161,7 +161,7 @@
             this.buttonCurve.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonCurve.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonCurve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCurve.Location = new System.Drawing.Point(3, 160);
+            this.buttonCurve.Location = new System.Drawing.Point(4, 160);
             this.buttonCurve.Name = "buttonCurve";
             this.buttonCurve.Size = new System.Drawing.Size(55, 55);
             this.buttonCurve.TabIndex = 11;
@@ -220,7 +220,7 @@
             // 
             // panelColor
             // 
-            this.panelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelColor.BackColor = System.Drawing.SystemColors.Control;
             this.panelColor.Controls.Add(this.buttonBackColor);
             this.panelColor.Controls.Add(this.buttonColor);
             this.panelColor.Controls.Add(this.buttonFillColor);
@@ -243,7 +243,7 @@
             // 
             // panelXiankuan
             // 
-            this.panelXiankuan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelXiankuan.BackColor = System.Drawing.SystemColors.Control;
             this.panelXiankuan.Controls.Add(this.labelXiankuan);
             this.panelXiankuan.Controls.Add(this.xiankuan);
             this.panelXiankuan.Controls.Add(this.trackBarXiankuan);
@@ -277,7 +277,7 @@
             // 
             // textBoxCmd
             // 
-            this.textBoxCmd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCmd.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.textBoxCmd.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxCmd.Location = new System.Drawing.Point(64, 758);
             this.textBoxCmd.Multiline = true;
@@ -297,7 +297,7 @@
             this.button3D.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button3D.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button3D.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3D.Location = new System.Drawing.Point(3, 464);
+            this.button3D.Location = new System.Drawing.Point(4, 464);
             this.button3D.Name = "button3D";
             this.button3D.Size = new System.Drawing.Size(55, 55);
             this.button3D.TabIndex = 21;
@@ -333,6 +333,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1182, 843);
             this.Controls.Add(this.buttonResize);
             this.Controls.Add(this.buttonCut);
