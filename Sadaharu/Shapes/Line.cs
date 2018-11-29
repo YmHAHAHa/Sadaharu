@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Sadaharu.Shape
+namespace Sadaharu.Shapes
 {
     class Line:Shape
     {
         public Point a, b;
 
-        public Line(Pen pen) : base(pen)
+        public Line(Point p1, Point p2) : base()
         {
-
+            a = p1;
+            b = p2;
         }
 
         public override bool isSelect(Point p)

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Sadaharu.Shapes;
 //using Sadaharu;
 
 namespace Sadaharu.Tools
@@ -76,6 +77,8 @@ namespace Sadaharu.Tools
                 /*
                  * save a line here
                  */
+                Line line = new Line(startPoint, e.Location);
+                Common.history.PushRecord(new Record(line, this));
             }
         }
 

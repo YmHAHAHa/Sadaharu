@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Sadaharu.Shape
+namespace Sadaharu.Shapes
 {
     abstract class Shape:ISelectIt
     {
@@ -16,9 +16,9 @@ namespace Sadaharu.Shape
 
         protected bool isAdjust, isMove;
 
-        public Shape(Pen pen)
+        public Shape()
         {
-            this.drawPen = pen;
+            this.drawPen = Common.setting.nowPen.Clone() as Pen;
             this.backColor = Common.setting.nowColor;
             isAdjust = false;
             isMove = false;

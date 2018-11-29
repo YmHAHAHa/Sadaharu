@@ -12,5 +12,6 @@ namespace Sadaharu
 
         public static Setting setting;
 
+        public static History history;
     }
 }

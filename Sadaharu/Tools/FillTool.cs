@@ -10,7 +10,7 @@ namespace Sadaharu.Tools
 {
     class FillTool : Tool
     {
-        static Queue<Point> pointQueue = new Queue<Point>(750000);
+        static Queue<Point> pointQueue = new Queue<Point>(5000);
 
         public FillTool(MainWin window, PictureBox pic) : base(window, pic)
         {
@@ -34,6 +34,7 @@ namespace Sadaharu.Tools
         private void MainPicture_MouseClick(object sender, MouseEventArgs e)
         {
             floodfill(e.Location, Common.setting.nowColor);
+            mainWindow.cmdPrint(string.Format("Fill an region with {0}", Common.setting.nowColor));
             /*
              * save a floodfill here
              */

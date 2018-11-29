@@ -26,6 +26,7 @@ namespace Sadaharu
             Common.setting = new Setting();
             Common.drawtools.nowTool = Common.drawtools.pointerTool;
             Common.drawtools.nowTool.startUseTool();
+            Common.history = new History(this, mainPicture);
         }
 
         internal void cmdPrint(string str)
