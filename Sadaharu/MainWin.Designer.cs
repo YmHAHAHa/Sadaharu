@@ -376,8 +376,8 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TrackBar trackBarXiankuan;
         private System.Windows.Forms.PictureBox xiankuan;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button buttonColor;
+        public System.Windows.Forms.ColorDialog colorDialog1;
+        public System.Windows.Forms.Button buttonColor;
         private System.Windows.Forms.Panel panelColor;
         private System.Windows.Forms.Panel panelXiankuan;
         public System.Windows.Forms.Button buttonClear;
@@ -386,7 +386,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button button3D;
         private System.Windows.Forms.Button buttonCut;
-        private System.Windows.Forms.Button buttonBackColor;
+        public System.Windows.Forms.Button buttonBackColor;
         private System.Windows.Forms.Button buttonResize;
     }
 }

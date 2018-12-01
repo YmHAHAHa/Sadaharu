@@ -20,7 +20,7 @@ namespace Sadaharu.Tools
             isView.Initialize();
         }
 
-        public override void reDraw(Shape s)
+        public override void reDraw(Shape s, Graphics g)
         {
             
         }

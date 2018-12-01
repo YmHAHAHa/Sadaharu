@@ -20,7 +20,7 @@ namespace Sadaharu.Tools
             method = new SystemDrawCurve();
         }
 
-        public override void reDraw(Shape s)
+        public override void reDraw(Shape s, Graphics g)
         {
             //throw new NotImplementedException();
         }

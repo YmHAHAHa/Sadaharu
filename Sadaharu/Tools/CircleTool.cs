@@ -20,7 +20,7 @@ namespace Sadaharu.Tools
             this.method = new SystemDrawCircle();
         }
 
-        public override void reDraw(Shape s)
+        public override void reDraw(Shape s, Graphics g)
         {
             
         }

@@ -52,7 +52,7 @@ namespace Sadaharu
             cmdPrint(string.Format("Adjust thickness to {0,2}", trackBarXiankuan.Value));
         }
 
-        private void buttonColor_Click(object sender, EventArgs e)
+        public void buttonColor_Click(object sender, EventArgs e)
         {
             //colorDialog1.ShowDialog();
             if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -63,7 +63,7 @@ namespace Sadaharu
             }
         }
 
-        private void buttonBackColor_Click(object sender, EventArgs e)
+        public void buttonBackColor_Click(object sender, EventArgs e)
         {
             //colorDialog1.ShowDialog();
             if (colorDialog1.ShowDialog() == DialogResult.OK)

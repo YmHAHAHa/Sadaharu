@@ -18,7 +18,7 @@ namespace Sadaharu.Tools
             pointList = new List<Point>();
         }
 
-        public override void reDraw(Shape s)
+        public override void reDraw(Shape s, Graphics g)
         {
             
         }

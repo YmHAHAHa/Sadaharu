@@ -26,7 +26,7 @@ namespace Sadaharu.Tools
             this.isEnabled = false;
         }
 
-        public abstract void reDraw(Shape s);
+        public abstract void reDraw(Shape s, Graphics g);
 
         virtual public void startUseTool()
         {

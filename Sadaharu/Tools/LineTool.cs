@@ -26,13 +26,10 @@ namespace Sadaharu.Tools
             this.method = new SystemDrawLine();
         }
 
-        public override void reDraw(Shape s)
+        public override void reDraw(Shape s, Graphics g)
         {
             Line line = (Line)s;
-            using (Graphics g = Graphics.FromImage(mainPicture.Image))
-            {
-                draw(g, line.drawPen, line.a, line.b);
-            }
+            draw(g, line.drawPen, line.a, line.b);
         }
 
         public override void startUseTool()

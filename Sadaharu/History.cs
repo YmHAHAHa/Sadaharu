@@ -20,12 +20,18 @@ namespace Sadaharu
 
         List<Record> recordList;
 
+        //List<FillTool> fillList;
+
+        Image imageTmp;
+
         public History(MainWin window, PictureBox picture)
         {
             mainWindow = window;
             mainPicture = picture;
             recordList = new List<Record>();
+            //fillList = new List<FillTool>();
             nowSelect = null;
+            imageTmp = new Bitmap(mainPicture.Width, mainPicture.Height);
         }
 
         public void PushRecord(Record r)
@@ -61,6 +67,7 @@ namespace Sadaharu
                         nowSelect.shape.endSelect();
                     }
                     nowSelect = r;
+                    drawWithoutNow();
                     nowSelect.shape.startSelect();
                     mainWindow.cmdPrint("Select " + r.shape.showMessage());
                     return;
@@ -76,10 +83,37 @@ namespace Sadaharu
 
         public void update()
         {
-            mainWindow.clearAll();
-            foreach(Record r in recordList)
+            //mainWindow.clearAll();
+            //foreach(Record r in recordList)
+            //{
+            //    r.tool.reDraw(r.shape);
+            //}
+            mainPicture.Image.Dispose();
+            mainPicture.Image = (Image)imageTmp.Clone();
+            using (Graphics g = Graphics.FromImage(mainPicture.Image))
             {
-                r.tool.reDraw(r.shape);
+                if (nowSelect != null)
+                {
+                    nowSelect.tool.reDraw(nowSelect.shape, g);
+                }
+            }
+        }
+
+        private void drawWithoutNow()
+        {
+            if (imageTmp != null)
+            {
+                imageTmp.Dispose();
+            }
+            imageTmp = new Bitmap(mainPicture.Width, mainPicture.Height);
+            using (Graphics g = Graphics.FromImage(imageTmp))
+            {
+                g.Clear(Color.White);
+                foreach(Record r in recordList)
+                {
+                    if (r == nowSelect) continue;
+                    r.tool.reDraw(r.shape, g);
+                }
             }
         }
 
