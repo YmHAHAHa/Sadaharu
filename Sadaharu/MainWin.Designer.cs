@@ -380,7 +380,7 @@
         private System.Windows.Forms.Button buttonColor;
         private System.Windows.Forms.Panel panelColor;
         private System.Windows.Forms.Panel panelXiankuan;
-        private System.Windows.Forms.Button buttonClear;
+        public System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label labelXiankuan;
         private System.Windows.Forms.TextBox textBoxCmd;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;

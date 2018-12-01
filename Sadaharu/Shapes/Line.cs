@@ -20,7 +20,38 @@ namespace Sadaharu.Shapes
 
         public override bool isSelect(Point p)
         {
-            return false;
+            //return false;
+            int x1 = a.X < b.X ? a.X : b.X;
+            int x2 = a.X + b.X - x1;
+            if (p.X < x1 || p.X > x2)
+            {
+                return false;
+            }
+            return disPoint2Line(a, b, p) < 5.0;
+        }
+
+        public override string showMessage()
+        {
+            return string.Format("a line: ({0},{1}) to ({2},{3})",
+                    a.X, a.Y, b.X, b.Y);
+        }
+
+        public static double disPoint2Line(PointF a,PointF b, PointF p)
+        {
+            double dis = 0;
+            if (a.X == b.X)
+            {
+                dis = Math.Abs(p.X - a.X);
+
+                return dis;
+            }
+            double lineK = (b.Y - a.Y) / (b.X - a.X);
+
+            double lineC = (b.X * a.Y - a.X * b.Y) / (b.X - a.X);
+
+            dis = Math.Abs(lineK * p.X - p.Y + lineC) / (Math.Sqrt(lineK * lineK + 1));
+
+            return dis;
         }
 
         public override void startSelect()

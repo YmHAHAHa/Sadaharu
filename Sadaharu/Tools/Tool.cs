@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Sadaharu.Shapes;
 
 namespace Sadaharu.Tools
 {
@@ -24,6 +25,8 @@ namespace Sadaharu.Tools
             this.mainPicture = pic;
             this.isEnabled = false;
         }
+
+        public abstract void reDraw(Shape s);
 
         virtual public void startUseTool()
         {

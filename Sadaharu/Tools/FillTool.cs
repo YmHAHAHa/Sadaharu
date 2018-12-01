@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Sadaharu.Shapes;
 
 namespace Sadaharu.Tools
 {
@@ -17,6 +18,11 @@ namespace Sadaharu.Tools
         {
             //pointQueue = new Queue<Point>(750000);
             isView.Initialize();
+        }
+
+        public override void reDraw(Shape s)
+        {
+            
         }
 
         public override void startUseTool()

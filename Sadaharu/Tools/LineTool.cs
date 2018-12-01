@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using Sadaharu.Shapes;
-//using Sadaharu;
 
 namespace Sadaharu.Tools
 {
@@ -25,6 +24,15 @@ namespace Sadaharu.Tools
         {
             //this.method = new Bresenham();
             this.method = new SystemDrawLine();
+        }
+
+        public override void reDraw(Shape s)
+        {
+            Line line = (Line)s;
+            using (Graphics g = Graphics.FromImage(mainPicture.Image))
+            {
+                draw(g, line.drawPen, line.a, line.b);
+            }
         }
 
         public override void startUseTool()

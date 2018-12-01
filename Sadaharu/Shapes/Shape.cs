@@ -26,6 +26,8 @@ namespace Sadaharu.Shapes
 
         public abstract bool isSelect(Point p);
 
+        public abstract string showMessage();
+
         public virtual void startSelect()
         {
 

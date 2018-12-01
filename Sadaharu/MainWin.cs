@@ -90,9 +90,11 @@ namespace Sadaharu
             cmdPrint("Ready to select a shape");
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        public void buttonClear_Click(object sender, EventArgs e)
         {
             clearAll();
+            Common.history.clearList();
+            cmdPrint("Clear the canvas");
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

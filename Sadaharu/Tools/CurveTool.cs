@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Sadaharu.Shapes;
 
 namespace Sadaharu.Tools
 {
@@ -17,6 +18,11 @@ namespace Sadaharu.Tools
         {
             pointList = new List<Point>();
             method = new SystemDrawCurve();
+        }
+
+        public override void reDraw(Shape s)
+        {
+            //throw new NotImplementedException();
         }
 
         public override void startUseTool()
