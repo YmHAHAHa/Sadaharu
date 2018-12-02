@@ -65,8 +65,10 @@ namespace Sadaharu.Tools
                 mainWindow.buttonColor.BackColor = mainWindow.colorDialog1.Color;
                 Common.setting.nowPen.Color = mainWindow.colorDialog1.Color;
                 if (Common.history.nowSelect != null)
+                {
                     Common.history.nowSelect.shape.drawPen.Color = mainWindow.colorDialog1.Color;
-                Common.history.update();
+                    Common.history.update();
+                }
             }
         }
 
@@ -77,8 +79,10 @@ namespace Sadaharu.Tools
                 mainWindow.buttonBackColor.BackColor = mainWindow.colorDialog1.Color;
                 Common.setting.nowColor = mainWindow.colorDialog1.Color;
                 if (Common.history.nowSelect != null)
+                {
                     Common.history.nowSelect.shape.backColor = mainWindow.colorDialog1.Color;
-                Common.history.update();
+                    Common.history.update();
+                }
             }
         }
 

@@ -23,7 +23,7 @@ namespace Sadaharu.Shapes
             //return false;
             int x1 = a.X < b.X ? a.X : b.X;
             int x2 = a.X + b.X - x1;
-            if (p.X < x1 || p.X > x2)
+            if (p.X < x1 - 5 || p.X > x2 + 5)
             {
                 return false;
             }

@@ -63,6 +63,7 @@
     <Compile Include="Record.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="Shapes\Line.cs" />
+    <Compile Include="Shapes\Rect.cs" />
     <Compile Include="Shapes\Shape.cs" />
     <Compile Include="Shapes\Shape_Interface.cs" />
     <Compile Include="Tools\CircleTool.cs" />

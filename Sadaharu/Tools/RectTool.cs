@@ -22,7 +22,8 @@ namespace Sadaharu.Tools
 
         public override void reDraw(Shape s, Graphics g)
         {
-            
+            Rect rect = (Rect)s;
+            draw(g, rect.drawPen, rect.a, rect.c);
         }
 
         public override void startUseTool()
@@ -76,6 +77,8 @@ namespace Sadaharu.Tools
                 /*
                  * save a Rect here
                  */
+                Rect rect = new Rect(startPoint, e.Location);
+                Common.history.PushRecord(new Record(rect, this));
             }
         }
 
