@@ -15,6 +15,7 @@ namespace Sadaharu.Shapes
         public Point a, b;
 
         AdjustButton adjustButton1, adjustButton2;
+        AdjustButton moveButton;
 
         public Line(Point p1, Point p2) : base()
         {
@@ -65,16 +66,33 @@ namespace Sadaharu.Shapes
             {
                 adjustButton1 = new AdjustButton(Common.mainPicture,
                     new Point(a.X - 3, a.Y - 3), Cursors.SizeNS);
+                adjustButton1.MouseDown += AB_MouseDown;
+                adjustButton1.MouseMove += AB_MouseMove;
+                adjustButton1.MouseUp += AB_MouseUp;
             }
             if (adjustButton2 == null)
             {
                 adjustButton2 = new AdjustButton(Common.mainPicture,
                     new Point(b.X - 3, b.Y - 3), Cursors.SizeNS);
+                adjustButton2.MouseDown += AB_MouseDown;
+                adjustButton2.MouseMove += AB_MouseMove;
+                adjustButton2.MouseUp += AB_MouseUp;
+            }
+            if(moveButton==null)
+            {
+                moveButton = new AdjustButton(Common.mainPicture,
+                    new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3), Cursors.SizeAll);
+                moveButton.BackColor = Color.Green;
             }
             adjustButton1.setAllPoints(
                 new Ref<Point>(() => a, z => { a = z; }));
             adjustButton2.setAllPoints(
                 new Ref<Point>(() => b, z => { b = z; }));
+            moveButton.setAllPoints(
+                new Ref<Point>(() => a, z => { a = z; }),
+                new Ref<Point>(() => b, z => { b = z; }),
+                new Ref<Point>(() => adjustButton1.Location, z => { adjustButton1.Location = z; }),
+                new Ref<Point>(() => adjustButton2.Location, z => { adjustButton2.Location = z; }));
         }
 
         public override void endSelect()
@@ -84,6 +102,29 @@ namespace Sadaharu.Shapes
             adjustButton1 = null;
             adjustButton2.clear();
             adjustButton2 = null;
+            moveButton.clear();
+            moveButton = null;
+        }
+
+        private void AB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isAdjust = true;
+            }
+        }
+
+        private void AB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isAdjust)
+            {
+                moveButton.Location = new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3);
+            }
+        }
+
+        private void AB_MouseUp(object sender, MouseEventArgs e)
+        {
+            isAdjust = false;
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Sadaharu
         {
             labelXiankuan.Text = string.Format("Thickness: {0,2}", trackBarXiankuan.Value);
             //cmdPrint(trackBarXiankuan.Value.ToString());
-            Common.setting.nowPen.Width = trackBarXiankuan.Value;
+            Common.setting.nowPen.Width = trackBarXiankuan.Value + 1;
             cmdPrint(string.Format("Adjust thickness to {0,2}", trackBarXiankuan.Value));
         }
 

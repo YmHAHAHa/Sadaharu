@@ -19,19 +19,22 @@ namespace Sadaharu.Mybuttons
 
         PictureBox mainPicture;
 
-        Point startLocation, tmpLocation;
+        public Point startLocation;
+
+        Point tmpLocation;
 
         bool isAdjust;
 
         public AdjustButton(
             PictureBox pic, Point loc, Cursor cursor) : base()
         {
-            //InitializeComponent();
             this.mainPicture = pic;
-            this.Location = this.startLocation = loc;
+            this.Location = loc;
             this.Cursor = cursor;
             this.BackColor = Color.Blue;
-            this.Size = new Size(10, 10);
+            this.Size = new Size(9, 9);
+            this.FlatAppearance.BorderSize = 0;
+            this.FlatStyle = FlatStyle.Popup;
             mainPicture.Controls.Add(this);
             isAdjust = false;
             this.Show();
@@ -41,10 +44,12 @@ namespace Sadaharu.Mybuttons
         {
             this.adjustPoints = refs;
             beginPoints = new Point[adjustPoints.Length];
-            for (int i = 0; i < beginPoints.Length; i++)
-            {
-                beginPoints [i] = adjustPoints[i].Value;
-            }
+
+            //startLocation = this.Location;
+            //for (int i = 0; i < beginPoints.Length; i++)
+            //{
+            //    beginPoints [i] = adjustPoints[i].Value;
+            //}
         }
 
         public void clear()
@@ -58,8 +63,15 @@ namespace Sadaharu.Mybuttons
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             base.OnMouseDown(mevent);
+
             if (mevent.Button == MouseButtons.Left)
             {
+                startLocation = this.Location;
+                for (int i = 0; i < beginPoints.Length; i++)
+                {
+                    beginPoints[i] = adjustPoints[i].Value;
+                }
+
                 tmpLocation = mevent.Location;
                 isAdjust = true;
             }
