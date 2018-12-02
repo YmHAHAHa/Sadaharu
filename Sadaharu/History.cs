@@ -67,8 +67,8 @@ namespace Sadaharu
                         nowSelect.shape.endSelect();
                     }
                     nowSelect = r;
-                    drawWithoutNow();
-                    nowSelect.shape.startSelect();
+                    //drawWithoutNow();
+                    nowSelect.shape.startSelect();      //do drawWithoutNow() here!!!!
                     mainWindow.cmdPrint("Select " + r.shape.showMessage());
                     return;
                 }
@@ -99,7 +99,7 @@ namespace Sadaharu
             }
         }
 
-        private void drawWithoutNow()
+        public void drawWithoutNow()
         {
             if (imageTmp != null)
             {

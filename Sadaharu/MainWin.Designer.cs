@@ -279,10 +279,11 @@
             // 
             this.textBoxCmd.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.textBoxCmd.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxCmd.Location = new System.Drawing.Point(64, 758);
+            this.textBoxCmd.Location = new System.Drawing.Point(64, 756);
             this.textBoxCmd.Multiline = true;
             this.textBoxCmd.Name = "textBoxCmd";
-            this.textBoxCmd.Size = new System.Drawing.Size(1113, 80);
+            this.textBoxCmd.ReadOnly = true;
+            this.textBoxCmd.Size = new System.Drawing.Size(1113, 82);
             this.textBoxCmd.TabIndex = 20;
             this.textBoxCmd.Text = "Hello, I\'m Sadaharu!";
             // 
@@ -350,8 +351,9 @@
             this.Controls.Add(this.buttonStraight);
             this.Controls.Add(this.panelColor);
             this.Controls.Add(this.panelXiankuan);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWin";
-            this.Text = "Paint";
+            this.Text = "Sadaharu";
             ((System.ComponentModel.ISupportInitialize)(this.mainPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarXiankuan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xiankuan)).EndInit();

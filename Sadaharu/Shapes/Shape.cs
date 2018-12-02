@@ -30,12 +30,13 @@ namespace Sadaharu.Shapes
 
         public virtual void startSelect()
         {
-
+            Common.history.drawWithoutNow();
+            Common.history.update();
         }
 
         public virtual void endSelect()
         {
-
+            
         }
     }
 }
