@@ -115,12 +115,23 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="bit5.ico" />
+    <Content Include="Resources\3d2.png" />
+    <Content Include="Resources\arrow.png" />
     <Content Include="Resources\bit3.ico" />
     <Content Include="Resources\bit5.ico" />
+    <Content Include="Resources\clear.png" />
+    <Content Include="Resources\color.fill.png" />
+    <Content Include="Resources\curse.png" />
+    <Content Include="Resources\cut.png" />
     <Content Include="Resources\ellipse.png" />
     <Content Include="Resources\line.png" />
+    <Content Include="Resources\polygon.png" />
     <Content Include="Resources\rectangle.png" />
+    <Content Include="Resources\redo.png" />
+    <Content Include="Resources\resize.png" />
     <Content Include="Resources\save.png" />
+    <Content Include="Resources\undo.png" />
+    <Content Include="Resources\xiankuan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
