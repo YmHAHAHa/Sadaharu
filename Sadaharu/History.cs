@@ -60,6 +60,7 @@ namespace Sadaharu
                 {
                     if (r == nowSelect)
                     {
+                        mainWindow.cmdPrint("Select " + r.shape.showMessage());
                         return;
                     }
                     if (nowSelect != null)

@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Sadaharu.Mybuttons;
+using Sadaharu.Mylibs;
 
 namespace Sadaharu.Shapes
 {
     class Line:Shape
     {
         public Point a, b;
+
+        AdjustButton adjustButton1, adjustButton2;
 
         public Line(Point p1, Point p2) : base()
         {
@@ -57,11 +61,29 @@ namespace Sadaharu.Shapes
         public override void startSelect()
         {
             base.startSelect();
+            if (adjustButton1 == null)
+            {
+                adjustButton1 = new AdjustButton(Common.mainPicture,
+                    new Point(a.X - 3, a.Y - 3), Cursors.SizeNS);
+            }
+            if (adjustButton2 == null)
+            {
+                adjustButton2 = new AdjustButton(Common.mainPicture,
+                    new Point(b.X - 3, b.Y - 3), Cursors.SizeNS);
+            }
+            adjustButton1.setAllPoints(
+                new Ref<Point>(() => a, z => { a = z; }));
+            adjustButton2.setAllPoints(
+                new Ref<Point>(() => b, z => { b = z; }));
         }
 
         public override void endSelect()
         {
             base.endSelect();
+            adjustButton1.clear();
+            adjustButton1 = null;
+            adjustButton2.clear();
+            adjustButton2 = null;
         }
     }
 }
