@@ -58,6 +58,12 @@
     <Compile Include="MainWin.Designer.cs">
       <DependentUpon>MainWin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mybuttons\AdjustButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mybuttons\AdjustButton.Designer.cs">
+      <DependentUpon>AdjustButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Record.cs" />

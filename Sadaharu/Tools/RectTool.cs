@@ -23,7 +23,14 @@ namespace Sadaharu.Tools
         public override void reDraw(Shape s, Graphics g)
         {
             Rect rect = (Rect)s;
-            draw(g, rect.drawPen, rect.a, rect.c);
+            //draw(g, rect.drawPen, rect.a, rect.c);
+            int x = rect.a.X < rect.c.X ? rect.a.X : rect.c.X;
+            int y = rect.a.Y < rect.c.Y ? rect.a.Y : rect.c.Y;
+            int lx = rect.a.X + rect.c.X - x - x;
+            int ly = rect.a.Y + rect.c.Y - y - y;
+            if (s.backColor != Color.White)
+                g.FillRectangle(new SolidBrush(s.backColor), x, y, lx, ly);
+            g.DrawRectangle(s.drawPen, x, y, lx, ly);
         }
 
         public override void startUseTool()
