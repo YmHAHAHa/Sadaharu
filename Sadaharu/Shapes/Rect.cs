@@ -16,6 +16,8 @@ namespace Sadaharu.Shapes
 
         RectAdjustButton adjustButton1, adjustButton2, adjustButton3, adjustButton4;
 
+        AdjustButton moveButton;
+
         public Rect(Point p1, Point p2) : base()
         {
             a = p1;
@@ -51,21 +53,39 @@ namespace Sadaharu.Shapes
             {
                 adjustButton1 = new RectAdjustButton(Common.mainPicture,
                     new Point(a.X - 3, a.Y - 3), Cursors.SizeNS);
+                adjustButton1.MouseDown += AB_MouseDown;
+                adjustButton1.MouseMove += AB_MouseMove;
+                adjustButton1.MouseUp += AB_MouseUp;
             }
             if (adjustButton2 == null)
             {
                 adjustButton2 = new RectAdjustButton(Common.mainPicture,
                     new Point(b.X - 3, b.Y - 3), Cursors.SizeNS);
+                adjustButton2.MouseDown += AB_MouseDown;
+                adjustButton2.MouseMove += AB_MouseMove;
+                adjustButton2.MouseUp += AB_MouseUp;
             }
             if (adjustButton3 == null)
             {
                 adjustButton3 = new RectAdjustButton(Common.mainPicture,
                     new Point(c.X - 3, c.Y - 3), Cursors.SizeNS);
+                adjustButton3.MouseDown += AB_MouseDown;
+                adjustButton3.MouseMove += AB_MouseMove;
+                adjustButton3.MouseUp += AB_MouseUp;
             }
             if (adjustButton4 == null)
             {
                 adjustButton4 = new RectAdjustButton(Common.mainPicture,
                     new Point(d.X - 3, d.Y - 3), Cursors.SizeNS);
+                adjustButton4.MouseDown += AB_MouseDown;
+                adjustButton4.MouseMove += AB_MouseMove;
+                adjustButton4.MouseUp += AB_MouseUp;
+            }
+            if (moveButton == null)
+            {
+                moveButton = new AdjustButton(Common.mainPicture,
+                    new Point((a.X + c.X) / 2 - 3, (a.Y + c.Y) / 2 - 3), Cursors.SizeAll);
+                moveButton.BackColor = Color.Green;
             }
 
             adjustButton1.setAllPoints(
@@ -92,6 +112,15 @@ namespace Sadaharu.Shapes
                 new Ref<Point>(() => a, z => { a = z; }),
                 new Ref<Point>(() => adjustButton3.Location, z => { adjustButton3.Location = z; }),
                 new Ref<Point>(() => adjustButton1.Location, z => { adjustButton1.Location = z; }));
+            moveButton.setAllPoints(
+                new Ref<Point>(() => a, z => { a = z; }),
+                new Ref<Point>(() => b, z => { b = z; }),
+                new Ref<Point>(() => c, z => { c = z; }),
+                new Ref<Point>(() => d, z => { d = z; }),
+                new Ref<Point>(() => adjustButton1.Location, z => { adjustButton1.Location = z; }),
+                new Ref<Point>(() => adjustButton2.Location, z => { adjustButton2.Location = z; }),
+                new Ref<Point>(() => adjustButton3.Location, z => { adjustButton3.Location = z; }),
+                new Ref<Point>(() => adjustButton4.Location, z => { adjustButton4.Location = z; }));
         }
 
         public override void endSelect()
@@ -105,6 +134,29 @@ namespace Sadaharu.Shapes
             adjustButton3 = null;
             adjustButton4.clear();
             adjustButton4 = null;
+            moveButton.clear();
+            moveButton = null;
+        }
+
+        private void AB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isAdjust = true;
+            }
+        }
+
+        private void AB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isAdjust)
+            {
+                moveButton.Location = new Point((a.X + c.X) / 2 - 3, (a.Y + c.Y) / 2 - 3);
+            }
+        }
+
+        private void AB_MouseUp(object sender, MouseEventArgs e)
+        {
+            isAdjust = false;
         }
     }
 }
