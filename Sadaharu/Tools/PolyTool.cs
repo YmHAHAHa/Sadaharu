@@ -76,8 +76,11 @@ namespace Sadaharu.Tools
                 /*
                  * save a Poly here
                  */
-                Polygon poly = new Polygon(new List<Point>(pointList.ToArray()));
-                Common.history.PushRecord(new Record(poly, this));
+                if (pointList.Count > 2)
+                {
+                    Polygon poly = new Polygon(new List<Point>(pointList.ToArray()));
+                    Common.history.PushRecord(new Record(poly, this));
+                }
                 pointList.Clear();
             }
         }
