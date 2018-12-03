@@ -20,7 +20,9 @@ namespace Sadaharu.Tools
 
         public override void reDraw(Shape s, Graphics g)
         {
-            
+            Polygon polygon = (Polygon)s;
+            g.FillPolygon(new SolidBrush(polygon.backColor), polygon.pointList.ToArray());
+            g.DrawPolygon(polygon.drawPen, polygon.pointList.ToArray());
         }
 
         public override void startUseTool()
@@ -74,6 +76,8 @@ namespace Sadaharu.Tools
                 /*
                  * save a Poly here
                  */
+                Polygon poly = new Polygon(new List<Point>(pointList.ToArray()));
+                Common.history.PushRecord(new Record(poly, this));
                 pointList.Clear();
             }
         }
