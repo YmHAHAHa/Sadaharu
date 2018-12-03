@@ -97,7 +97,10 @@ namespace Sadaharu.Tools
             /*
              * select a shape here
              */
-            Common.history.SearchShape(e.Location);
+            if (e.Button == MouseButtons.Left)
+            {
+                Common.history.SearchShape(e.Location);
+            }
         }
     }
 }

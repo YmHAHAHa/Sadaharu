@@ -329,6 +329,7 @@
             this.buttonResize.Size = new System.Drawing.Size(60, 60);
             this.buttonResize.TabIndex = 25;
             this.buttonResize.UseVisualStyleBackColor = false;
+            this.buttonResize.Click += new System.EventHandler(this.buttonResize_Click);
             // 
             // MainWin
             // 

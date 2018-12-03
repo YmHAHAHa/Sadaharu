@@ -41,7 +41,7 @@ namespace Sadaharu.Shapes
 
         public override string showMessage()
         {
-            return string.Format("a rectangle: ({0},{1}), ({2},{3}), ({4},{5}), ({6},{7})",
+            return string.Format("the rectangle: ({0},{1}), ({2},{3}), ({4},{5}), ({6},{7})",
                     a.X, a.Y, b.X, b.Y, c.X, c.Y, d.X, d.Y);
         }
 
@@ -136,6 +136,18 @@ namespace Sadaharu.Shapes
             adjustButton4 = null;
             moveButton.clear();
             moveButton = null;
+        }
+
+        public override void startResize()
+        {
+            base.startResize();
+            this.startSelect();
+        }
+
+        public override void endResize()
+        {
+            base.endResize();
+            this.endSelect();
         }
 
         private void AB_MouseDown(object sender, MouseEventArgs e)

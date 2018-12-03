@@ -91,6 +91,7 @@
     <Compile Include="Tools\PointerTool.cs" />
     <Compile Include="Tools\PolyTool.cs" />
     <Compile Include="Tools\RectTool.cs" />
+    <Compile Include="Tools\ResizeTool.cs" />
     <Compile Include="Tools\Tool.cs" />
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>

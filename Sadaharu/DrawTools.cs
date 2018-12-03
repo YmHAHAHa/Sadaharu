@@ -18,6 +18,8 @@ namespace Sadaharu
 
         public PointerTool pointerTool;
 
+        public ResizeTool resizeTool;
+
         public LineTool lineTool;
 
         public RectTool rectTool;
@@ -41,6 +43,7 @@ namespace Sadaharu
             this.circleTool = new CircleTool(mainWindow, mainPicture);
             this.curveTool = new CurveTool(mainWindow, mainPicture);
             this.fillTool = new FillTool(mainWindow, mainPicture);
+            this.resizeTool = new ResizeTool(mainWindow, mainPicture);
         }
     }
 }

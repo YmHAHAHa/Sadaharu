@@ -149,5 +149,13 @@ namespace Sadaharu
             Common.drawtools.nowTool.startUseTool();
             cmdPrint(string.Format("Ready to fill a region with {0}", Common.setting.nowColor));
         }
+
+        private void buttonResize_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.resizeTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint("Ready to resize a shape");
+        }
     }
 }

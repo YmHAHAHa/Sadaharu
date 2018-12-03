@@ -82,6 +82,36 @@ namespace Sadaharu
             mainWindow.cmdPrint("No shape was Selected");
         }
 
+        public void SearchShape_Resize(Point p)
+        {
+            foreach (Record r in recordList)
+            {
+                if (r.shape.isSelect(p))
+                {
+                    if (r == nowSelect)
+                    {
+                        mainWindow.cmdPrint("Resize " + r.shape.showMessage());
+                        return;
+                    }
+                    if (nowSelect != null)
+                    {
+                        nowSelect.shape.endResize();
+                    }
+                    nowSelect = r;
+                    //drawWithoutNow();
+                    nowSelect.shape.startResize();      //do drawWithoutNow() here!!!!
+                    mainWindow.cmdPrint("Resize " + r.shape.showMessage());
+                    return;
+                }
+            }
+            if (nowSelect != null)
+            {
+                nowSelect.shape.endResize();
+                nowSelect = null;
+            }
+            mainWindow.cmdPrint("No shape was Selected");
+        }
+
         public void update()
         {
             //mainWindow.clearAll();
