@@ -21,7 +21,10 @@ namespace Sadaharu.Tools
         public override void reDraw(Shape s, Graphics g)
         {
             Polygon polygon = (Polygon)s;
-            g.FillPolygon(new SolidBrush(polygon.backColor), polygon.pointList.ToArray());
+            if (polygon.backColor != Color.White)
+            {
+                g.FillPolygon(new SolidBrush(polygon.backColor), polygon.pointList.ToArray());
+            }
             g.DrawPolygon(polygon.drawPen, polygon.pointList.ToArray());
         }
 
