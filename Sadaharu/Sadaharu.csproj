@@ -69,6 +69,12 @@
     <Compile Include="Mybuttons\AdjustButton.Designer.cs">
       <DependentUpon>AdjustButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mybuttons\RectAdjustButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mybuttons\RectAdjustButton.Designer.cs">
+      <DependentUpon>RectAdjustButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mylibs\Ref.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -19,7 +19,7 @@ namespace Sadaharu.Mybuttons
 
         PictureBox mainPicture;
 
-        public Point startLocation;
+        Point startLocation;
 
         Point tmpLocation;
 
@@ -87,7 +87,8 @@ namespace Sadaharu.Mybuttons
                 
                 for (int i = 0; i < adjustPoints.Length; i++)
                 {
-                    adjustPoints[i].Value = new Point(beginPoints[i].X + Location.X - startLocation.X,
+                    adjustPoints[i].Value = new Point(
+                        beginPoints[i].X + this.Location.X - startLocation.X,
                         beginPoints[i].Y + this.Location.Y - startLocation.Y);
                 }
                 Common.history.update();
