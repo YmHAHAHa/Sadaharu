@@ -27,7 +27,8 @@ namespace Sadaharu.Shapes
             if (line.isSelect(p)) return true;
             for(int i = 1; i < pointList.Count; ++i)
             {
-                line = new Line(pointList[i - 1], pointList[i]);
+                line.a = pointList[i - 1];
+                line.b = pointList[i];
                 if (line.isSelect(p)) return true;
             }
             return false;
