@@ -14,9 +14,14 @@ namespace Sadaharu.Shapes
     {
         public List<Point> pointList;
 
+        List<AdjustButton> adjustButtonList;
+
+        AdjustButton moveButton;
+
         public Polygon(List<Point> points) : base()
         {
             pointList = points;
+            adjustButtonList = new List<AdjustButton>();
         }
 
         public override bool isSelect(Point p)
@@ -44,11 +49,44 @@ namespace Sadaharu.Shapes
         public override void startSelect()
         {
             base.startSelect();
+            int sumx = 0, sumy = 0;
+            for (int i = 0; i < pointList.Count; ++i)
+            {
+                AdjustButton tmp = new AdjustButton(Common.mainPicture,
+                    new Point(pointList[i].X - 3, pointList[i].Y - 3), Cursors.SizeNS);
+                //tmp.setAllPoints(
+                //    new Ref<Point>(() => pointList[i], z => { pointList[i] = z; }));
+                tmp.MouseDown += AB_MouseDown;
+                tmp.MouseMove += AB_MouseMove;
+                tmp.MouseUp += AB_MouseUp;
+                tmp.setAllPoints();
+                adjustButtonList.Add(tmp);
+                sumx += pointList[i].X;
+                sumy += pointList[i].Y;
+            }
+            if (moveButton == null)
+            {
+                moveButton = new AdjustButton(Common.mainPicture,
+                    new Point(sumx / pointList.Count - 3, sumy / pointList.Count - 3), Cursors.SizeAll);
+                moveButton.BackColor = Color.Green;
+                moveButton.MouseDown += MB_MouseDown;
+                moveButton.MouseMove += MB_MouseMove;
+                moveButton.MouseUp += MB_MouseUp;
+                moveButton.setAllPoints();
+            }
         }
 
         public override void endSelect()
         {
             base.endSelect();
+            for(int i = 0; i < adjustButtonList.Count; ++i)
+            {
+                adjustButtonList[i].clear();
+                adjustButtonList[i] = null;
+            }
+            adjustButtonList.Clear();
+            moveButton.clear();
+            moveButton = null;
         }
 
         public override void startResize()
@@ -59,6 +97,68 @@ namespace Sadaharu.Shapes
         public override void endResize()
         {
             base.endResize();
+        }
+
+        private void AB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isAdjust = true;
+            }
+        }
+
+        private void AB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isAdjust)
+            {
+                AdjustButton tmp = (AdjustButton)sender;
+                int index = adjustButtonList.IndexOf(tmp);
+                pointList[index] = new Point(tmp.Location.X + 3, tmp.Location.Y + 3);
+                int sumx = 0, sumy = 0;
+                foreach(Point i in pointList)
+                {
+                    sumx += i.X;
+                    sumy += i.Y;
+                }
+                moveButton.Location = new Point(sumx / pointList.Count - 3, sumy / pointList.Count - 3);
+            }
+        }
+
+        private void AB_MouseUp(object sender, MouseEventArgs e)
+        {
+            isAdjust = false;
+        }
+
+        Point moveButtonStartLocation;
+
+        private void MB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMove = true;
+                moveButtonStartLocation = e.Location;
+            }
+        }
+
+        private void MB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove)
+            {
+                int lx = e.Location.X - moveButtonStartLocation.X;
+                int ly = e.Location.Y - moveButtonStartLocation.Y;
+                for (int i = 0; i < pointList.Count; ++i)
+                {
+                    Point tmp = pointList[i];
+                    pointList[i] = new Point(tmp.X + lx, tmp.Y + ly);
+                    tmp = adjustButtonList[i].Location;
+                    adjustButtonList[i].Location = new Point(tmp.X + lx, tmp.Y + ly);
+                }
+            }
+        }
+
+        private void MB_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMove = false;
         }
     }
 }

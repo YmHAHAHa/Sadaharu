@@ -67,9 +67,9 @@ namespace Sadaharu.Mybuttons
             if (mevent.Button == MouseButtons.Left)
             {
                 startLocation = this.Location;
-                for (int i = 0; i < beginPoints.Length; i++)
+                for (int j = 0; j < beginPoints.Length; j++)
                 {
-                    beginPoints[i] = adjustPoints[i].Value;
+                    beginPoints[j] = adjustPoints[j].Value;
                 }
 
                 tmpLocation = mevent.Location;
