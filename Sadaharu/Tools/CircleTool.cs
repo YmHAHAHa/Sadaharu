@@ -22,7 +22,16 @@ namespace Sadaharu.Tools
 
         public override void reDraw(Shape s, Graphics g)
         {
-            
+            Circle circle = (Circle)s;
+            int x = circle.a.X < circle.c.X ? circle.a.X : circle.c.X;
+            int y = circle.a.Y < circle.c.Y ? circle.a.Y : circle.c.Y;
+            int lx = circle.a.X + circle.c.X - x - x;
+            int ly = circle.a.Y + circle.c.Y - y - y;
+            if (s.backColor != Color.White)
+            {
+                g.FillEllipse(new SolidBrush(s.backColor), x, y, lx, ly);
+            }
+            g.DrawEllipse(s.drawPen, x, y, lx, ly);
         }
 
         public override void startUseTool()
@@ -75,6 +84,8 @@ namespace Sadaharu.Tools
                 /*
                  * save a Circle here
                  */
+                Circle circle = new Circle(startPoint, e.Location);
+                Common.history.PushRecord(new Record(circle, this));
             }
         }
 
