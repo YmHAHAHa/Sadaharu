@@ -70,9 +70,25 @@ namespace Sadaharu.Shapes
                     a.X, a.Y, c.X, c.Y);
         }
 
+        private void drawSelectRect()
+        {
+            Pen pentmp = new Pen(Color.Gray, 1);
+            float[] dashp = { 2f, 3f };
+            pentmp.DashPattern = dashp;
+            using (Graphics g = Graphics.FromImage(Common.mainPicture.Image))
+            {
+                g.DrawLine(pentmp, a, b);
+                g.DrawLine(pentmp, a, d);
+                g.DrawLine(pentmp, c, b);
+                g.DrawLine(pentmp, c, d);
+            }
+        }
+
         public override void startSelect()
         {
             base.startSelect();
+
+            drawSelectRect();
 
             if (adjustButton1 == null)
             {
@@ -112,6 +128,8 @@ namespace Sadaharu.Shapes
                     new Point((a.X + c.X) / 2 - 3, (a.Y + c.Y) / 2 - 3), Cursors.SizeAll);
                 moveButton.BackColor = Color.Green;
                 moveButton.MouseUp += MB_MouseUp;
+                moveButton.MouseDown += MB_MouseDown;
+                moveButton.MouseMove += MB_MouseMove;
             }
 
             adjustButton1.setAllPoints(
@@ -196,11 +214,30 @@ namespace Sadaharu.Shapes
         {
             isAdjust = false;
             midPoint = new Point((a.X + c.X) / 2, (a.Y + c.Y) / 2);
+            drawSelectRect();
+            //drawSelectRect();
+        }
+
+        private void MB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMove = true;
+            }
+        }
+
+        private void MB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove)
+            {
+            }
         }
 
         private void MB_MouseUp(object sender, MouseEventArgs e)
         {
             midPoint = new Point((a.X + c.X) / 2, (a.Y + c.Y) / 2);
+            drawSelectRect();
+            //drawSelectRect();
         }
     }
 }

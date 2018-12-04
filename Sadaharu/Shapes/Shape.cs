@@ -36,7 +36,7 @@ namespace Sadaharu.Shapes
 
         public virtual void endSelect()
         {
-            
+            Common.history.update();
         }
 
         public virtual void startResize()
