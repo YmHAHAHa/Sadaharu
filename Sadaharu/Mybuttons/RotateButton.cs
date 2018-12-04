@@ -24,7 +24,7 @@ namespace Sadaharu.Mybuttons
 
         Point tmpLocation;              //cursor startPoint
 
-        Point midPoint;
+        public Point midPoint;
 
         bool isRotate;
 
@@ -65,13 +65,13 @@ namespace Sadaharu.Mybuttons
             if (mevent.Button == MouseButtons.Left)
             {
                 startLocation = this.Location;
-                //for (int j = 0; j < beginPoints.Length - 1; j++) 
-                //{
-                //    beginPoints[j] = adjustPoints[j].Value;
-                //}
-                //beginPoints[beginPoints.Length - 1] = this.Location;
+                for (int j = 0; j < beginPoints.Length - 1; j++)
+                {
+                    beginPoints[j] = adjustPoints[j].Value;
+                }
+                beginPoints[beginPoints.Length - 1] = this.Location;
 
-                beginPoints = new PointF[] { new PointF(200, 200), new PointF(300, 400), this.Location };
+                //beginPoints = new PointF[] { new PointF(200, 200), new PointF(300, 400), this.Location };
 
                 tmpLocation = mevent.Location;
                 isRotate = true;
@@ -97,6 +97,13 @@ namespace Sadaharu.Mybuttons
                     var n5 = (float)((midPoint.X * (1 - Math.Cos(a)) + midPoint.Y * Math.Sin(a)));
                     var n6 = (float)((midPoint.Y * (1 - Math.Cos(a)) - midPoint.X * Math.Sin(a)));
                     path.Transform(new Matrix(n1, n2, n3, n4, n5, n6));
+
+                    for(int i=0;i< beginPoints.Length - 1; ++i)
+                    {
+                        int xx = (int)path.PathPoints[i].X,
+                            yy = (int)path.PathPoints[i].Y;
+                        adjustPoints[i].Value = new Point(xx, yy);
+                    }
 
                     int x = (int)path.PathPoints[path.PointCount - 1].X,
                         y = (int)path.PathPoints[path.PointCount - 1].Y;

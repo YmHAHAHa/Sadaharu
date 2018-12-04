@@ -14,6 +14,8 @@ namespace Sadaharu.Shapes
     {
         public Point a, b;
 
+        bool isRotate;
+
         AdjustButton adjustButton1, adjustButton2;
         AdjustButton moveButton;
         RotateButton rotateButton;
@@ -22,6 +24,7 @@ namespace Sadaharu.Shapes
         {
             a = p1;
             b = p2;
+            isRotate = false;
         }
 
         public override bool isSelect(Point p)
@@ -60,6 +63,17 @@ namespace Sadaharu.Shapes
             return dis;
         }
 
+        private void drawRB2MB()
+        {
+            Pen pentmp = new Pen(Color.Gray, 1);
+            float[] dashp = { 2f, 3f };
+            pentmp.DashPattern = dashp;
+            using (Graphics g = Graphics.FromImage(Common.mainPicture.Image))
+            {
+                g.DrawLine(pentmp, moveButton.Location, rotateButton.Location);
+            }
+        }
+
         public override void startSelect()
         {
             base.startSelect();
@@ -84,11 +98,17 @@ namespace Sadaharu.Shapes
                 moveButton = new AdjustButton(Common.mainPicture,
                     new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3), Cursors.SizeAll);
                 moveButton.BackColor = Color.Green;
+                moveButton.MouseDown += MB_MouseDown;
+                moveButton.MouseMove += MB_MouseMove;
+                moveButton.MouseUp += MB_MouseUp;
             }
             if (rotateButton == null)
             {
                 rotateButton = new RotateButton(Common.mainPicture,
                     new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2));
+                rotateButton.MouseDown += RB_MouseDown;
+                rotateButton.MouseMove += RB_MouseMove;
+                rotateButton.MouseUp += RB_MouseUp;
             }
             adjustButton1.setAllPoints(
                 new Ref<Point>(() => a, z => { a = z; }));
@@ -100,7 +120,12 @@ namespace Sadaharu.Shapes
                 new Ref<Point>(() => adjustButton1.Location, z => { adjustButton1.Location = z; }),
                 new Ref<Point>(() => adjustButton2.Location, z => { adjustButton2.Location = z; }),
                 new Ref<Point>(() => rotateButton.Location, z => { rotateButton.Location = z; }));
-            rotateButton.setAllPoints();
+            rotateButton.setAllPoints(
+                new Ref<Point>(() => a, z => { a = z; }),
+                new Ref<Point>(() => b, z => { b = z; }));
+
+
+            //drawRB2MB();
         }
 
         public override void endSelect()
@@ -142,12 +167,77 @@ namespace Sadaharu.Shapes
             {
                 moveButton.Location = new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3);
                 rotateButton.Location = new Point((a.X + b.X) / 2 + 77, (a.Y + b.Y) / 2 - 3);
+                rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
             }
         }
 
         private void AB_MouseUp(object sender, MouseEventArgs e)
         {
-            isAdjust = false;
+            if (e.Button == MouseButtons.Left)
+            {
+                isAdjust = false;
+                moveButton.Location = new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3);
+                rotateButton.Location = new Point((a.X + b.X) / 2 + 77, (a.Y + b.Y) / 2 - 3);
+                rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
+            }
+            //drawRB2MB();
+        }
+
+        private void MB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMove = true;
+            }
+        }
+
+        private void MB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove)
+            {
+                rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
+            }
+        }
+
+        private void MB_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMove = false;
+                rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
+            }
+            //drawRB2MB();
+        }
+
+        private void RB_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isRotate = true;
+            }
+        }
+
+        private void RB_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isRotate)
+            {
+                //rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
+                adjustButton1.Location = new Point(a.X - 3, a.Y - 3);
+                adjustButton2.Location = new Point(b.X - 3, b.Y - 3);
+                moveButton.Location = new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3);
+            }
+        }
+
+        private void RB_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isRotate = false;
+                adjustButton1.Location = new Point(a.X - 3, a.Y - 3);
+                adjustButton2.Location = new Point(b.X - 3, b.Y - 3);
+                moveButton.Location = new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3);
+            }
+            //drawRB2MB();
         }
     }
 }
