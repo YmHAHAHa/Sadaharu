@@ -23,6 +23,8 @@ namespace Sadaharu.Tools
         public override void reDraw(Shape s, Graphics g)
         {
             //throw new NotImplementedException();
+            Curve curve = (Curve)s;
+            g.DrawCurve(curve.drawPen, curve.pointList.ToArray());
         }
 
         public override void startUseTool()
@@ -69,6 +71,11 @@ namespace Sadaharu.Tools
                 /*
                  * save a Curve here
                  */
+                if (pointList.Count > 1)
+                {
+                    Curve curve = new Curve(new List<Point>(pointList.ToArray()));
+                    Common.history.PushRecord(new Record(curve, this));
+                }
                 pointList.Clear();
             }
         }

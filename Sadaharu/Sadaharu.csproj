@@ -82,6 +82,7 @@
     <Compile Include="Record.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="Shapes\Circle.cs" />
+    <Compile Include="Shapes\Curve.cs" />
     <Compile Include="Shapes\Line.cs" />
     <Compile Include="Shapes\Polygon.cs" />
     <Compile Include="Shapes\Rect.cs" />
