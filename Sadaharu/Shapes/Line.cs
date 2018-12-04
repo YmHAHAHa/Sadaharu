@@ -16,6 +16,7 @@ namespace Sadaharu.Shapes
 
         AdjustButton adjustButton1, adjustButton2;
         AdjustButton moveButton;
+        RotateButton rotateButton;
 
         public Line(Point p1, Point p2) : base()
         {
@@ -84,6 +85,11 @@ namespace Sadaharu.Shapes
                     new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3), Cursors.SizeAll);
                 moveButton.BackColor = Color.Green;
             }
+            if (rotateButton == null)
+            {
+                rotateButton = new RotateButton(Common.mainPicture,
+                    new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2));
+            }
             adjustButton1.setAllPoints(
                 new Ref<Point>(() => a, z => { a = z; }));
             adjustButton2.setAllPoints(
@@ -92,7 +98,9 @@ namespace Sadaharu.Shapes
                 new Ref<Point>(() => a, z => { a = z; }),
                 new Ref<Point>(() => b, z => { b = z; }),
                 new Ref<Point>(() => adjustButton1.Location, z => { adjustButton1.Location = z; }),
-                new Ref<Point>(() => adjustButton2.Location, z => { adjustButton2.Location = z; }));
+                new Ref<Point>(() => adjustButton2.Location, z => { adjustButton2.Location = z; }),
+                new Ref<Point>(() => rotateButton.Location, z => { rotateButton.Location = z; }));
+            rotateButton.setAllPoints();
         }
 
         public override void endSelect()
@@ -104,6 +112,8 @@ namespace Sadaharu.Shapes
             adjustButton2 = null;
             moveButton.clear();
             moveButton = null;
+            rotateButton.clear();
+            rotateButton = null;
         }
 
         public override void startResize()
@@ -131,6 +141,7 @@ namespace Sadaharu.Shapes
             if (isAdjust)
             {
                 moveButton.Location = new Point((a.X + b.X) / 2 - 3, (a.Y + b.Y) / 2 - 3);
+                rotateButton.Location = new Point((a.X + b.X) / 2 + 77, (a.Y + b.Y) / 2 - 3);
             }
         }
 

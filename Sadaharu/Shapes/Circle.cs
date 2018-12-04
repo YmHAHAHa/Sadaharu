@@ -215,6 +215,7 @@ namespace Sadaharu.Shapes
             isAdjust = false;
             midPoint = new Point((a.X + c.X) / 2, (a.Y + c.Y) / 2);
             drawSelectRect();
+            //Common.mainPicture = Common.mainPicture;
             //drawSelectRect();
         }
 
@@ -237,6 +238,7 @@ namespace Sadaharu.Shapes
         {
             midPoint = new Point((a.X + c.X) / 2, (a.Y + c.Y) / 2);
             drawSelectRect();
+            //Common.mainPicture = Common.mainPicture;
             //drawSelectRect();
         }
     }

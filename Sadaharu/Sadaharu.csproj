@@ -76,6 +76,12 @@
     <Compile Include="Mybuttons\RectAdjustButton.Designer.cs">
       <DependentUpon>RectAdjustButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mybuttons\RotateButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mybuttons\RotateButton.Designer.cs">
+      <DependentUpon>RotateButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mylibs\Ref.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +145,7 @@
     <Content Include="Resources\rectangle.png" />
     <Content Include="Resources\redo.png" />
     <Content Include="Resources\resize.png" />
+    <Content Include="Resources\ro1.cur" />
     <Content Include="Resources\save.png" />
     <Content Include="Resources\undo.png" />
     <Content Include="Resources\xiankuan.png" />
