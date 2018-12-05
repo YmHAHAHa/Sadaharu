@@ -24,8 +24,6 @@ namespace Sadaharu
 
         Image imageTmp;
 
-        public bool isSelectCircle;
-
         public History(MainWin window, PictureBox picture)
         {
             mainWindow = window;
@@ -34,7 +32,6 @@ namespace Sadaharu
             //fillList = new List<FillTool>();
             nowSelect = null;
             imageTmp = new Bitmap(mainPicture.Width, mainPicture.Height);
-            isSelectCircle = false;
         }
 
         public void PushRecord(Record r)

@@ -70,7 +70,7 @@ namespace Sadaharu.Shapes
                     a.X, a.Y, c.X, c.Y);
         }
 
-        public void drawSelectRect()
+        private void drawSelectRect()
         {
             Pen pentmp = new Pen(Color.Gray, 1);
             float[] dashp = { 2f, 3f };
@@ -89,7 +89,6 @@ namespace Sadaharu.Shapes
             base.startSelect();
 
             //drawSelectRect();
-            Common.history.isSelectCircle = true;
 
             if (adjustButton1 == null)
             {
@@ -171,7 +170,6 @@ namespace Sadaharu.Shapes
         public override void endSelect()
         {
             base.endSelect();
-            Common.history.isSelectCircle = false;
             adjustButton1.clear();
             adjustButton1 = null;
             adjustButton2.clear();
