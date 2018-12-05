@@ -76,6 +76,13 @@
     <Compile Include="Mybuttons\RectAdjustButton.Designer.cs">
       <DependentUpon>RectAdjustButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mybuttons\ResizeButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Mybuttons\ResizeButton.Designer.cs">
+      <DependentUpon>ResizeButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mybuttons\ResizeRectangle.cs" />
     <Compile Include="Mybuttons\RotateButton.cs">
       <SubType>Component</SubType>
     </Compile>

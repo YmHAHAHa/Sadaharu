@@ -132,16 +132,6 @@ namespace Sadaharu.Shapes
             rotateButton = null;
         }
 
-        public override void startResize()
-        {
-            base.startResize();
-        }
-
-        public override void endResize()
-        {
-            base.endResize();
-        }
-
         private void AB_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -307,6 +297,85 @@ namespace Sadaharu.Shapes
                 }
                 moveButton.Location = new Point(
                     sumx / pointList.Count - 3, sumy / pointList.Count - 3);
+            }
+        }
+
+        ResizeRectangle resizeRectangle;
+
+        public override void startResize()
+        {
+            base.startResize();
+            Common.history.drawWithoutNow();
+            Common.history.update();
+            int x1 = 100000, x2 = -1, y1 = 100000, y2 = -1;
+            for(int i = 0; i < pointList.Count; ++i)
+            {
+                x1 = x1 < pointList[i].X ? x1 : pointList[i].X;
+                y1 = y1 < pointList[i].Y ? y1 : pointList[i].Y;
+                x2 = x2 > pointList[i].X ? x2 : pointList[i].X;
+                y2 = y2 > pointList[i].Y ? y2 : pointList[i].Y;
+            }
+            Rectangle r = new Rectangle(x1, y1, x2 - x1, y2 - y1);
+            resizeRectangle = new ResizeRectangle(Common.mainPicture, r);
+            resizeRectangle.rbResizeButton.MouseDown += RB_MD;
+            resizeRectangle.rbResizeButton.MouseMove += RB_MM;
+            resizeRectangle.rbResizeButton.MouseUp += RB_MU;
+        }
+
+        public override void endResize()
+        {
+            base.endResize();
+            resizeRectangle.clear();
+            Common.history.update();
+        }
+
+        bool isResize;
+        Point rbStartLocation;
+
+        private void RB_MD(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isResize = true;
+                rbStartLocation = new Point(resizeRectangle.rbResizeButton.Location.X + 3,
+                    resizeRectangle.rbResizeButton.Location.Y + 3);
+                for(int i = 0; i < pointList.Count; ++i)
+                {
+                    beginPoints[i] = pointList[i];
+                }
+            }
+        }
+
+        private void RB_MM(object sender, MouseEventArgs e)
+        {
+            if (isResize)
+            {
+                Point tmp = new Point(resizeRectangle.rbResizeButton.Location.X + 3,
+                    resizeRectangle.rbResizeButton.Location.Y + 3);
+                double oldlx = rbStartLocation.X - resizeRectangle.ltp.X,
+                    oldly = rbStartLocation.Y - resizeRectangle.ltp.Y,
+                    newlx = tmp.X - resizeRectangle.ltp.X,
+                    newly = tmp.Y - resizeRectangle.ltp.Y;
+                double px = newlx / oldlx,
+                    py = newly / oldly;
+                for(int i = 0; i < pointList.Count; ++i)
+                {
+                    double dx = beginPoints[i].X - resizeRectangle.ltp.X,
+                        dy = beginPoints[i].Y - resizeRectangle.ltp.Y;
+                    double newdx = dx * px,
+                        newdy = dy * py;
+                    int newx = resizeRectangle.ltp.X + (int)newdx,
+                        newy = resizeRectangle.ltp.Y + (int)newdy;
+                    pointList[i] = new Point(newx, newy);
+                }
+            }
+        }
+
+        private void RB_MU(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isResize = false;
             }
         }
     }

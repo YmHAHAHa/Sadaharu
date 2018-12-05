@@ -157,6 +157,7 @@
             // 
             // buttonCurve
             // 
+            this.buttonCurve.BackColor = System.Drawing.Color.Transparent;
             this.buttonCurve.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCurve.BackgroundImage")));
             this.buttonCurve.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonCurve.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -165,7 +166,7 @@
             this.buttonCurve.Name = "buttonCurve";
             this.buttonCurve.Size = new System.Drawing.Size(55, 55);
             this.buttonCurve.TabIndex = 11;
-            this.buttonCurve.UseVisualStyleBackColor = true;
+            this.buttonCurve.UseVisualStyleBackColor = false;
             this.buttonCurve.Click += new System.EventHandler(this.buttonCurve_Click);
             // 
             // buttonSave
