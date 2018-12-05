@@ -99,8 +99,6 @@ namespace Sadaharu.Shapes
                 moveButton.MouseMove += MB_MouseMove;
                 moveButton.MouseUp += MB_MouseUp;
             }
-            moveButton.setAllPoints(
-                new Ref<Point>(() => rotateButton.Location, z => { rotateButton.Location = z; }));
             if (rotateButton == null)
             {
                 rotateButton = new RotateButton(Common.mainPicture,
@@ -110,6 +108,8 @@ namespace Sadaharu.Shapes
                 rotateButton.MouseUp += RB_MouseUp;
             }
             midPoint = rotateButton.midPoint;
+            moveButton.setAllPoints(
+                new Ref<Point>(() => rotateButton.Location, z => { rotateButton.Location = z; }));
             rotateButton.setAllPoints(
                 new Ref<Point>(() => a, z => { a = z; }),
                 new Ref<Point>(() => b, z => { b = z; }));
