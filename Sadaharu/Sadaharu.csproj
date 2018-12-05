@@ -103,6 +103,7 @@
     <Compile Include="Shapes\Shape_Interface.cs" />
     <Compile Include="Tools\CircleTool.cs" />
     <Compile Include="Tools\CurveTool.cs" />
+    <Compile Include="Tools\CutTool.cs" />
     <Compile Include="Tools\FillTool.cs" />
     <Compile Include="Tools\LineTool.cs" />
     <Compile Include="Tools\PointerTool.cs" />

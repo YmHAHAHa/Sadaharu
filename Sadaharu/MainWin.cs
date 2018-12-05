@@ -157,5 +157,13 @@ namespace Sadaharu
             Common.drawtools.nowTool.startUseTool();
             cmdPrint("Ready to resize a shape");
         }
+
+        private void buttonCut_Click(object sender, EventArgs e)
+        {
+            Common.drawtools.nowTool.endUseTool();
+            Common.drawtools.nowTool = Common.drawtools.cutTool;
+            Common.drawtools.nowTool.startUseTool();
+            cmdPrint("Ready to clip lines");
+        }
     }
 }

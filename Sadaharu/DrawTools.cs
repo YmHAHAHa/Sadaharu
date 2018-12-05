@@ -32,6 +32,8 @@ namespace Sadaharu
 
         public FillTool fillTool;
 
+        public CutTool cutTool;
+
         public DrawTools(MainWin window, PictureBox pic)
         {
             this.mainWindow = window;
@@ -44,6 +46,7 @@ namespace Sadaharu
             this.curveTool = new CurveTool(mainWindow, mainPicture);
             this.fillTool = new FillTool(mainWindow, mainPicture);
             this.resizeTool = new ResizeTool(mainWindow, mainPicture);
+            this.cutTool = new CutTool(mainWindow, mainPicture);
         }
     }
 }

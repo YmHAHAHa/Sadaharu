@@ -233,6 +233,7 @@
             // buttonBackColor
             // 
             this.buttonBackColor.BackColor = System.Drawing.Color.White;
+            this.buttonBackColor.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonBackColor.FlatAppearance.BorderSize = 0;
             this.buttonBackColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBackColor.Location = new System.Drawing.Point(157, 10);
@@ -317,6 +318,7 @@
             this.buttonCut.Size = new System.Drawing.Size(60, 60);
             this.buttonCut.TabIndex = 23;
             this.buttonCut.UseVisualStyleBackColor = false;
+            this.buttonCut.Click += new System.EventHandler(this.buttonCut_Click);
             // 
             // buttonResize
             // 
