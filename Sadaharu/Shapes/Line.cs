@@ -68,9 +68,12 @@ namespace Sadaharu.Shapes
             Pen pentmp = new Pen(Color.Gray, 1);
             float[] dashp = { 2f, 3f };
             pentmp.DashPattern = dashp;
+            Point m = new Point(moveButton.Location.X + 3, moveButton.Location.Y + 3),
+                r = new Point(rotateButton.Location.X + 3, rotateButton.Location.Y + 3);
             using (Graphics g = Graphics.FromImage(Common.mainPicture.Image))
             {
-                g.DrawLine(pentmp, moveButton.Location, rotateButton.Location);
+                g.DrawLine(pentmp, m, r);
+                Common.mainPicture.Image = Common.mainPicture.Image;
             }
         }
 
@@ -125,7 +128,7 @@ namespace Sadaharu.Shapes
                 new Ref<Point>(() => b, z => { b = z; }));
 
 
-            //drawRB2MB();
+            drawRB2MB();
         }
 
         public override void endSelect()
@@ -180,7 +183,7 @@ namespace Sadaharu.Shapes
                 rotateButton.Location = new Point((a.X + b.X) / 2 + 77, (a.Y + b.Y) / 2 - 3);
                 rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
             }
-            //drawRB2MB();
+            drawRB2MB();
         }
 
         private void MB_MouseDown(object sender, MouseEventArgs e)
@@ -206,7 +209,7 @@ namespace Sadaharu.Shapes
                 isMove = false;
                 rotateButton.midPoint = new Point((a.X + b.X) / 2, (a.Y + b.Y) / 2);
             }
-            //drawRB2MB();
+            drawRB2MB();
         }
 
         private void RB_MouseDown(object sender, MouseEventArgs e)

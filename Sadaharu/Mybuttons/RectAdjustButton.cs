@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using Sadaharu.Mylibs;
+using Sadaharu.Shapes;
 
 namespace Sadaharu.Mybuttons
 {

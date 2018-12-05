@@ -127,6 +127,15 @@ namespace Sadaharu.Mybuttons
             {
                 isRotate = false;
                 this.Location = new Point(midPoint.X + 77, midPoint.Y - 3);
+
+                Pen pentmp = new Pen(Color.Gray, 1);
+                float[] dashp = { 2f, 3f };
+                pentmp.DashPattern = dashp;
+                using (Graphics g = Graphics.FromImage(mainPicture.Image))
+                {
+                    g.DrawLine(pentmp, new Point(this.Location.X + 3, this.Location.Y + 3), midPoint);
+                    mainPicture.Image = mainPicture.Image;
+                }
             }
         }
     }
