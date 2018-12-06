@@ -270,6 +270,7 @@ namespace Sadaharu.Shapes
             }
 
             double k = (right.Value.Y * 1.0 - left.Value.Y) / (right.Value.X * 1.0 - left.Value.X);
+
         }
 
         private void cutXeN(int top,int bottom)
