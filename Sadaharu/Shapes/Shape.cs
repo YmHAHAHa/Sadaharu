@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Sadaharu.Shapes
 {
-    abstract class Shape:ISelectIt,IResizeIt
+    abstract class Shape:ISelectIt,IResizeIt,ICutIt
     {
         public Pen drawPen;
 
@@ -45,6 +45,11 @@ namespace Sadaharu.Shapes
         }
 
         public virtual void endResize()
+        {
+
+        }
+
+        public virtual void cutShape(Rectangle rect)
         {
 
         }

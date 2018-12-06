@@ -23,4 +23,9 @@ namespace Sadaharu.Shapes
     {
         void rotateShape(Point mid, double angel);
     }
+
+    interface ICutIt
+    {
+        void cutShape(Rectangle rect);
+    }
 }

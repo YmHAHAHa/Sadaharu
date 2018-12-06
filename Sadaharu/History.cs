@@ -112,6 +112,15 @@ namespace Sadaharu
             mainWindow.cmdPrint("No shape was Selected");
         }
 
+        public void CutAllShape(Rectangle rect)
+        {
+            for(int i = 0; i < recordList.Count; ++i)
+            {
+                recordList[i].shape.cutShape(rect);
+            }
+            updateAll();
+        }
+
         public void update()
         {
             //mainWindow.clearAll();
@@ -127,6 +136,20 @@ namespace Sadaharu
                 {
                     nowSelect.tool.reDraw(nowSelect.shape, g);
                 }
+            }
+        }
+
+        public void updateAll()
+        {
+            using (Graphics g = Graphics.FromImage(mainPicture.Image))
+            {
+                g.Clear(Color.White);
+                foreach (Record r in recordList)
+                {
+                    //if (r == nowSelect) continue;
+                    r.tool.reDraw(r.shape, g);
+                }
+                mainPicture.Image = mainPicture.Image;
             }
         }
 

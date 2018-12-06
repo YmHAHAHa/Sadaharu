@@ -242,5 +242,68 @@ namespace Sadaharu.Shapes
             }
             //drawRB2MB();
         }
+
+        public override void cutShape(Rectangle rect)
+        {
+            base.cutShape(rect);
+            if (a.X <= b.X + 1 && a.X >= b.X - 1)
+            {
+                if (a.X < rect.Left || a.X > rect.Right) return;
+                cutXeN(rect.Top, rect.Bottom);
+                return;
+            }
+            cutNomal(rect);
+        }
+
+        private void cutNomal(Rectangle rect)
+        {
+            Ref<Point> right, left;
+            if (a.X > b.X)
+            {
+                right = new Ref<Point>(() => a, z => { a = z; });
+                left = new Ref<Point>(() => b, z => { b = z; });
+            }
+            else
+            {
+                right = new Ref<Point>(() => b, z => { b = z; });
+                left = new Ref<Point>(() => a, z => { a = z; });
+            }
+
+            double k = (right.Value.Y * 1.0 - left.Value.Y) / (right.Value.X * 1.0 - left.Value.X);
+        }
+
+        private void cutXeN(int top,int bottom)
+        {
+            Ref<Point> right, left;
+            if (a.Y < b.Y)
+            {
+                right = new Ref<Point>(() => a, z => { a = z; });
+                left = new Ref<Point>(() => b, z => { b = z; });
+            }
+            else
+            {
+                right = new Ref<Point>(() => b, z => { b = z; });
+                left = new Ref<Point>(() => a, z => { a = z; });
+            }
+
+            if (right.Value.Y < top && left.Value.Y > bottom)
+            {
+                right.Value = new Point(right.Value.X, top);
+                left.Value = new Point(left.Value.X, bottom);
+                return;
+            }
+
+            if (right.Value.Y < top && left.Value.Y < bottom && left.Value.Y > top)
+            {
+                right.Value = new Point(right.Value.X, top);
+                return;
+            }
+
+            if (right.Value.Y > top && right.Value.Y < bottom && left.Value.Y > bottom)
+            {
+                left.Value = new Point(left.Value.X, bottom);
+                return;
+            }
+        }
     }
 }
