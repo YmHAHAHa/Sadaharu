@@ -258,6 +258,9 @@ namespace Sadaharu.Shapes
         private void cutNomal(Rectangle rect)
         {
             Ref<Point> right, left;
+            Point tmp1 = new Point(-1, -1),
+                tmp2 = new Point(-1, -1);
+
             if (a.X > b.X)
             {
                 right = new Ref<Point>(() => a, z => { a = z; });
@@ -270,7 +273,65 @@ namespace Sadaharu.Shapes
             }
 
             double k = (right.Value.Y * 1.0 - left.Value.Y) / (right.Value.X * 1.0 - left.Value.X);
+            double b1 = right.Value.Y * 1.0 - k * right.Value.X;
 
+            int lefty = (int)(k * rect.Left + b1),
+                righty = (int)(k * rect.Right + b1);
+
+            if (lefty <= rect.Top && righty >= rect.Top && righty <= rect.Bottom)
+            {
+                tmp2 = new Point(rect.Right, righty);
+                double xx = (rect.Top * 1.0 - b1) / k;
+                tmp1 = new Point((int)xx, rect.Top);
+            }
+
+            if (lefty <= rect.Top && righty >= rect.Bottom)
+            {
+                double xx1 = (rect.Top * 1.0 - b1) / k;
+                tmp1 = new Point((int)xx1, rect.Top);
+                double xx2 = (rect.Bottom * 1.0 - b1) / k;
+                tmp2 = new Point((int)xx2, rect.Bottom);
+            }
+
+            if (lefty >= rect.Top && lefty <= rect.Bottom && righty <= rect.Top)
+            {
+                tmp1 = new Point(rect.Left, lefty);
+                double xx = (rect.Top * 1.0 - b1) / k;
+                tmp2 = new Point((int)xx, rect.Top);
+            }
+
+            if (lefty >= rect.Top && lefty <= rect.Bottom 
+                && righty >= rect.Top && righty <= rect.Bottom)
+            {
+                tmp1 = new Point(rect.Left, lefty);
+                tmp2 = new Point(rect.Right, righty);
+            }
+
+            if(lefty >= rect.Top && lefty <= rect.Bottom && righty >= rect.Bottom)
+            {
+                tmp1 = new Point(rect.Left, lefty);
+                double xx2 = (rect.Bottom * 1.0 - b1) / k;
+                tmp2 = new Point((int)xx2, rect.Bottom);
+            }
+
+            if (lefty >= rect.Bottom && righty <= rect.Top)
+            {
+                double xx1 = (rect.Bottom * 1.0 - b1) / k;
+                tmp1 = new Point((int)xx1, rect.Bottom);
+                double xx2 = (rect.Top * 1.0 - b1) / k;
+                tmp2 = new Point((int)xx2, rect.Top);
+            }
+
+            if (lefty >= rect.Bottom && righty >= rect.Top && righty <= rect.Bottom)
+            {
+                tmp2 = new Point(rect.Right, righty);
+                double xx = (rect.Bottom * 1.0 - b1) / k;
+                tmp1 = new Point((int)xx, rect.Bottom);
+            }
+
+            if (right.Value.X < tmp1.X || left.Value.X > tmp2.X) return;
+            if (tmp1.X > left.Value.X) left.Value = tmp1;
+            if (tmp2.X < right.Value.X) right.Value = tmp2;
         }
 
         private void cutXeN(int top,int bottom)
