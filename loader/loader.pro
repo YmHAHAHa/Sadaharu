@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-12-21T10:29:47
+# Project created by QtCreator 2018-12-21T12:36:30
 #
 #-------------------------------------------------
 
@@ -27,10 +27,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        widget.cpp
+        widget.cpp \
+    openglwindow.cpp \
+    drawwindow.cpp
 
 HEADERS += \
-        widget.h
+        widget.h \
+    openglwindow.h \
+    drawwindow.h
 
 FORMS += \
         widget.ui
