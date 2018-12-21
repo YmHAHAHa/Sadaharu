@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Sadaharu
 {
@@ -164,6 +165,15 @@ namespace Sadaharu
             Common.drawtools.nowTool = Common.drawtools.cutTool;
             Common.drawtools.nowTool.startUseTool();
             cmdPrint("Ready to clip lines");
+        }
+
+        private void button3D_Click(object sender, EventArgs e)
+        {
+            //new ThreeDWin().ShowDialog();
+            ProcessStartInfo p = new ProcessStartInfo();
+            p.FileName = @"demo\loader.exe";
+            Process pro = Process.Start(p);
+            pro.WaitForExit();
         }
     }
 }

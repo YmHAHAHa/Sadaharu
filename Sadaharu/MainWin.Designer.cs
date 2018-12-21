@@ -305,6 +305,7 @@
             this.button3D.Size = new System.Drawing.Size(55, 55);
             this.button3D.TabIndex = 21;
             this.button3D.UseVisualStyleBackColor = false;
+            this.button3D.Click += new System.EventHandler(this.button3D_Click);
             // 
             // buttonCut
             // 
