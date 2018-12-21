@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sadaharu", "Sadaharu\Sadaharu.csproj", "{D9ECAA79-6870-4671-83D1-8BC31FE09444}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{C5854D4C-F3A2-447A-8962-D0DAB445D57A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{D9ECAA79-6870-4671-83D1-8BC31FE09444}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9ECAA79-6870-4671-83D1-8BC31FE09444}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9ECAA79-6870-4671-83D1-8BC31FE09444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5854D4C-F3A2-447A-8962-D0DAB445D57A}.Debug|Any CPU.ActiveCfg = Debug
+		{C5854D4C-F3A2-447A-8962-D0DAB445D57A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
